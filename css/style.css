@@ -117,13 +117,13 @@ button {
 
   background: rgba(46, 47, 66, 0.4);
 
-  opacity: 1;
-  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .backdrop.is-hidden {
-  opacity: 0;
   pointer-events: none;
+  visibility: hidden;
 }
 
 .backdrop.is-hidden .modal {
@@ -136,7 +136,7 @@ button {
   left: 50%;
 
   min-width: 408px;
-  min-height: 584px;
+  min-height: 576px;
 
   background-color: #fcfcfc;
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12),
@@ -150,27 +150,46 @@ button {
   display: flex;
   align-items: center;
   justify-content: end;
-
-  margin-top: 24px;
-  margin-right: 24px;
 }
 
 .close-button {
-  background: var(--accent-color);
+  position: absolute;
+  background-color: #e7e9fc;
   border: 1px solid rgba(0, 0, 0, 0.1);
 
   border-radius: 50%;
 
   width: 24px;
   height: 24px;
+  top: 24px;
 
+  padding: 0;
+
+  right: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
+
+  cursor: pointer;
+
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.close-button:hover,
+.close-button:focus {
+  background-color: #404bbf;
+  border: none;
 }
 
 .button-close-icon {
   fill: var(--title-text-color);
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.close-button:hover .button-close-icon,
+.close-button:focus .button-close-icon {
+  fill: #ffffff;
 }
 
 /* МОДАЛЬНОЕ ОКНО конец */
